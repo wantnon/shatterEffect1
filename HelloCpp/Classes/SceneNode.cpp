@@ -22,21 +22,19 @@ bool SceneNode::init(string texFileName)
     this->addChild(spriteBatchNode);
     //reset shatter
     this->resetShatter();
-    
-	return true ;
+   	return true ;
 }
 void SceneNode::startShatter(){
-    //
-    this->unscheduleUpdate();
+    //prepare *this
+    this->unscheduleUpdate();//in order to not schedule twice (cause assert failure), we call unschedule first
     this->scheduleUpdate();
     this->setIsAllParticleDisapear(false);
-    //
+    this->showThis=false;
+    //prepare batchNode
     this->spriteBatchNode->setVisible(true);
-    showThis=false;
-    //
+    //prepare particles
     int m=(int)grid.size();
     int n=m?(int)grid[0].size():0;
-    //begin schedule for all particles
     for(int i=0;i<m;i++){
         for(int j=0;j<n;j++){
             Cparticle*particle=grid[i][j];
@@ -44,13 +42,8 @@ void SceneNode::startShatter(){
             particle->scheduleUpdate();
             particle->setScale(particleScale0);
             particle->setIsDisapear(false);
-            
         }
     }
-    //
-
-    
-
 }
 void SceneNode::resetShatter(){
     if(d_new!=d){//recreate particles
@@ -86,13 +79,13 @@ void SceneNode::resetShatter(){
         }
     
     }
-    //
+    //reset *this
     this->resetTime();
     this->unscheduleUpdate();
-    //
+    this->showThis=true;
+    //reset batchNode
     this->spriteBatchNode->setVisible(false);
-    showThis=true;
-    //
+    //reset particles
     CCSize contentSize=this->getContentSize();
     int m=(int)grid.size();
     int n=m?(int)grid[0].size():0;
@@ -102,7 +95,7 @@ void SceneNode::resetShatter(){
             float x=j*d;
             float y_OatLD=contentSize.height-i*d;
             //particle relative to father node use O-at-downleft coordinate
-            //and no matter what the anchorPoint is, local origin of father sprite is at the downleft corner of father sprite.
+            //and no matter what the anchorPoint is, origin of father space is at the downleft corner of father sprite.
             particle->setPosition(ccp(x+0.5*d,y_OatLD+0.5*d));
             particle->setVelocity(ccp(0,0));
             particle->setAccel(ccp(0,0));
@@ -110,19 +103,15 @@ void SceneNode::resetShatter(){
             particle->resetTime();
             particle->unscheduleUpdate();
             particle->setScale(1);
-            
-            
         }
     }
 
-
 }
 void SceneNode::update(float t) {
-    
+    //update time
     time+=t;
     if(time>1000000)time=0;
-    //
-    
+    //update particles
     CCSize contentSize=this->getContentSize();
     CCPoint center=CCPoint(contentSize.width/2,contentSize.height/2);
     float R=ccpLength(ccp(contentSize.width,contentSize.height))/2;//radius of srounding circle
@@ -166,7 +155,7 @@ void SceneNode::update(float t) {
             particle->setScale(MAX(0, particleScale0-r*particleScale0/R_scale));
         }
     }
-    if(nDisapear==m*n){
+    if(nDisapear==m*n){//if all particles are disapeared, reset
         resetShatter();
     }
 

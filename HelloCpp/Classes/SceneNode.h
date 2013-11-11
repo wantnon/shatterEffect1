@@ -54,17 +54,20 @@ public:
     CCPoint getVelocity()const{return velocity;}
     CCPoint getAccel()const{return accel;}
     void update(float t){
+        //judge if the particle is disapeared
         if(this->getOpacity()==0||this->getScale()==0){
             setIsDisapear(true);
         }
+        //if the particle is disapeared, unschedule it.
         if(getIsDisapear()){
             unscheduleUpdate();
         }
+        //update the position of the particle based on velocity and accel
         CCPoint pos=this->getPosition();
         velocity=velocity+accel;
         pos=pos+velocity;
         this->setPosition(pos);
-        //
+        //update time
         time+=t;
         if(time>1000000)time=0;
     }
@@ -74,17 +77,17 @@ public:
     float getTime()const {return time;}
     void resetTime(){time=0;};
 private:
-    int randomNumber;
+    int randomNumber;//every particle pre-generate a random number
     CCPoint velocity;
     CCPoint accel;
-    float time;
-    bool isDisapear;
+    float time;//time eclipsed since the particle start to move
+    bool isDisapear;//whether the particle is disapeared
 };
 class SceneNode : public CCSprite{//here SceneNode is a CCSprite
 public:
 	SceneNode() {
         d_new=2.7;
-        d=-d_new;//we must ensure d!=d_new at initial time
+        d=-d_new;//we must ensure d!=d_new at initial time in order to trigger the creation of particles and grid.
         time=0;
         particleScale0=4.5;
         showThis=true;
@@ -107,14 +110,14 @@ public:
     void setParticleScale0(float value){particleScale0=value;}
 private:
 	
-	CGLProgramWithMyUnifos program;
-    float d;//grid step length
-    float d_new;//if d_new!=d then we need to recreate particles
-    vector<vector<Cparticle*> > grid;
-    CCSpriteBatchNode*spriteBatchNode;
-    float time;
-    float particleScale0;//particle initial scale
-    bool showThis;
-    bool isAllParticleDisapear;
+	CGLProgramWithMyUnifos program;//crrently unused
+    float d;//particle size (grid step length)
+    float d_new;//newly seted particle size, if d_new!=d then we need to recreate particles
+    vector<vector<Cparticle*> > grid;//hold all the particles
+    CCSpriteBatchNode*spriteBatchNode;//all particles added to this batchNode for quick drawing. batchNode added to *this
+    float time;//time eclipsed since shatter start
+    float particleScale0;//particle initial scale. we may want to make particles looks a litter bigger at the starting.
+    bool showThis;//whether need to show *this. when shattering, *this should be hide
+    bool isAllParticleDisapear;//whether all particles are disapeared
 };
 #endif

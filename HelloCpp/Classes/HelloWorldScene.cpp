@@ -64,7 +64,7 @@ bool HelloWorld::init()
     CCDirector::sharedDirector()->setDisplayStats(true);
     
     
-    //
+    //sceneNode
     SceneNode*sceneNode=new SceneNode();
     sceneNode->init("fish.png");
     sceneNode->setAnchorPoint(ccp(0.5,0.5));
@@ -111,7 +111,7 @@ bool HelloWorld::init()
 		pLabel->setPosition(ccp(slider->getPositionX()-slider->getContentSize().width/2-pLabel->getContentSize().width/2, slider->getPositionY()));
         this->addChild(pLabel, 1);
 	}
-    //--resetShatter
+    //resetShatter control button
     {
         cocos2d::extension::CCScale9Sprite* btnUp=cocos2d::extension::CCScale9Sprite::create("button.png");
         cocos2d::extension::CCScale9Sprite* btnDn=cocos2d::extension::CCScale9Sprite::create("button_dn.png");
@@ -259,7 +259,7 @@ void HelloWorld::ccTouchesBegan(CCSet* touches, CCEvent* event)
         CCPoint loc_GLSpace = CCDirector::sharedDirector()->convertToGL(loc_winSpace);
         //CCLOG("loc_GLSpace:%f,%f",loc_GLSpace.x,loc_GLSpace.y);
        
-        
+        pSceneNodeList[0]->resetShatter();//d_new may be changed, so we need to reset shatter to update particle size.
         pSceneNodeList[0]->startShatter();
         
     }

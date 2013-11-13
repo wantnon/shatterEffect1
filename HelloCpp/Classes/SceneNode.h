@@ -74,6 +74,7 @@ public:
     bool getIsDisapear()const {return isDisapear;}
     void setIsDisapear(float value){isDisapear=value;}
     int getRandomNumber()const {return randomNumber;}
+    void setRandomNumber(int number){randomNumber=number;}
     float getTime()const {return time;}
     void resetTime(){time=0;};
 private:

@@ -103,6 +103,7 @@ void SceneNode::resetShatter(){
             particle->resetTime();
             particle->unscheduleUpdate();
             particle->setScale(1);
+            particle->setRandomNumber(rand());
         }
     }
 
@@ -120,9 +121,9 @@ float SceneNode::calculateR(const CCPoint&dir,float R_size){
             const float sqrt2=1.414213562373095;
             float sinA=dir.y;
             float cosA=dir.x;
-            float tanA=dir.x==0?INFINITY:dir.y/dir.x;
+            float tanA=dir.x==0?(dir.y>0?INFINITY:-INFINITY):dir.y/dir.x;
             //calculate tangent line's slope k
-            float h=1.5*R_size;
+            float h=1.4*R_size;
             float tanB1=(R_size/2)/(R_size/2+h);
             float tanB2=sqrt2/2*R_size/sqrtf(pow2(R_size/2)+pow2(R_size/2+h)-pow2(sqrt2/2*R_size));
             float tanB1plusB2=(tanB1+tanB2)/(1-tanB1*tanB2);

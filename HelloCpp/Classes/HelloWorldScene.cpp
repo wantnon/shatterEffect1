@@ -170,7 +170,7 @@ bool HelloWorld::init()
     // add a label shows "Hello World"
     // create and initialize a label
  
-    CCLabelTTF* pLabel = CCLabelTTF::create("Shatter Effect 1", "Arial", 45);
+    CCLabelTTF* pLabel = CCLabelTTF::create("Shatter Effect 1 (v2.0)", "Arial", 45);
     
     // position the label on the center of the screen
     pLabel->setPosition(ccp(origin.x + visibleSize.width/2,

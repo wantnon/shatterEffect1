@@ -107,6 +107,70 @@ void SceneNode::resetShatter(){
     }
 
 }
+float SceneNode::calculateR(const CCPoint&dir,float R_size){
+    float R=0;
+    switch (shapeType) {
+        case SHAPETYPE_CIRCLE:
+        {
+            R=R_size;
+        }
+            break;
+        case SHAPETYPE_HEART:
+        {
+            const float sqrt2=1.414213562373095;
+            float sinA=dir.y;
+            float cosA=dir.x;
+            float tanA=dir.x==0?INFINITY:dir.y/dir.x;
+            //calculate tangent line's slope k
+            float h=1.5*R_size;
+            float tanB1=(R_size/2)/(R_size/2+h);
+            float tanB2=sqrt2/2*R_size/sqrtf(pow2(R_size/2)+pow2(R_size/2+h)-pow2(sqrt2/2*R_size));
+            float tanB1plusB2=(tanB1+tanB2)/(1-tanB1*tanB2);
+            float cotB1plusB2=1.0/tanB1plusB2;
+            float tan90subB1subB2=cotB1plusB2;
+            float k=tan90subB1subB2;
+            //calculate tangent point (px,py)
+            float px=(R_size/2+R_size/(2*k)+h)/(k+1.0/k);
+            float py=k*px-h;
+            float tanAstart=py/px;
+            //calculate polar radius R
+            if(dir.y>=0&&dir.x>=0){//quadrant I
+                if(tanA>tanAstart){
+                    float sin45=sqrt2/2;
+                    float cos45=sqrt2/2;
+                    float cos45subA=cos45*cosA+sin45*sinA;
+                    R=sqrt2*R_size*cos45subA;
+                }else{
+                    R=h/(k*cosA-sinA);
+                }
+                
+            }else if(dir.y>=0&&dir.x<=0){//quadrant II
+                if(-tanA>tanAstart){
+                    float sin135=sqrt2/2;
+                    float cos135=-sqrt2/2;
+                    float cos135subA=cos135*cosA+sin135*sinA;
+                    R=sqrt2*R_size*cos135subA;
+                }else{
+                     R=h/(-k*cosA-sinA);
+                }
+                
+            }else if(dir.y<=0&&dir.x<=0){//quadrant III
+                R=h/(-k*cosA-sinA);
+            }else if(dir.y<=0&&dir.x>=0){//quadrant IV
+                R=h/(k*cosA-sinA);
+                
+            }else{
+                CCAssert(false, "can not be here!");
+            }
+        }
+            break;
+        default:
+            CCAssert(false, "unknown shape type!");
+            break;
+    }
+    return R;
+
+}
 void SceneNode::update(float t) {
     //update time
     time+=t;
@@ -114,11 +178,7 @@ void SceneNode::update(float t) {
     //update particles
     CCSize contentSize=this->getContentSize();
     CCPoint center=CCPoint(contentSize.width/2,contentSize.height/2);
-    float R=ccpLength(ccp(contentSize.width,contentSize.height))/2;//radius of srounding circle
-    float Rcur=R+time*50;//crrent R
-    float R_opacity=R;
-    float R_scale=R;
-    float R_rand=R;
+    float R_content=ccpLength(ccp(contentSize.width,contentSize.height))/2;//radius of srounding circle
     int nDisapear=0;
     int m=(int)grid.size();
     int n=m?(int)grid[0].size():0;
@@ -129,7 +189,17 @@ void SceneNode::update(float t) {
                 nDisapear++;
                 continue;
             }
+            //get particle position
             CCPoint pos=particle->getPosition();
+            //dir
+            CCPoint dir=ccpNormalize(pos-center);
+            //calculate R
+            float R=calculateR(dir,R_content);
+            //set other R
+            float R_opacity=R;
+            float R_scale=R;
+            float R_rand=R;
+            float Rcur=R*(1+time*0.5);//+time*50;//crrent R
             //how far from particle to center
             float r=ccpLength(pos-center);
             //how far from particle to srounding circle edge
@@ -138,8 +208,6 @@ void SceneNode::update(float t) {
             d+=particle->getRandomNumber()%(int)R_rand-R_rand/2;
             //we move 10 percent of d
             float vLen=d/30;
-            //dir
-            CCPoint dir=ccpNormalize(pos-center);
             //v
             CCPoint v=ccpMult(dir, vLen);
             //set v to particle
@@ -156,6 +224,7 @@ void SceneNode::update(float t) {
         }
     }
     if(nDisapear==m*n){//if all particles are disapeared, reset
+        this->setIsAllParticleDisapear(true);
         resetShatter();
     }
 

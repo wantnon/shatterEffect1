@@ -15,4 +15,5 @@ using namespace std;
 #include "cocos-ext.h"
 using namespace cocos2d;
 CCTexture2D* createCCTexture2DWithSize(const CCSize&size,CCTexture2DPixelFormat eFormat,float r,float g,float b,float a);
+float pow2(float x);
 #endif /* defined(__HelloCpp__myFunc__) */

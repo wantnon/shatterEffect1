@@ -8,7 +8,9 @@
 
 #include "myFunc.h"
 #include "support/ccUtils.cpp"//if we use #include "support/ccUtils.cpp", in vs2010 cause linking error "unsolved external symbol".
-
+float pow2(float x){
+    return x*x;
+}
 CCTexture2D* createCCTexture2DWithSize(const CCSize&size,CCTexture2DPixelFormat eFormat,
                                        float r=0,float g=0,float b=0,float a=0)//r,g,b,a are range form 0 to 1
 {

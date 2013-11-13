@@ -254,12 +254,6 @@
 		189B0C281816A280003CDFEE /* SceneNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 189B0C1F1816A21F003CDFEE /* SceneNode.cpp */; };
 		189B0C291816A280003CDFEE /* SceneNode.h in Sources */ = {isa = PBXBuildFile; fileRef = 189B0C201816A21F003CDFEE /* SceneNode.h */; };
 		18B41E8D1802FC1E007B8CDD /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18B41E7D1802FC1E007B8CDD /* Marker Felt.ttf */; };
-		18B41E8E1802FC1E007B8CDD /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B41E7F1802FC1E007B8CDD /* CloseNormal.png */; };
-		18B41E8F1802FC1E007B8CDD /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B41E801802FC1E007B8CDD /* CloseSelected.png */; };
-		18B41E901802FC1E007B8CDD /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B41E811802FC1E007B8CDD /* HelloWorld.png */; };
-		18B41E911802FC1E007B8CDD /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B41E831802FC1E007B8CDD /* CloseNormal.png */; };
-		18B41E921802FC1E007B8CDD /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B41E841802FC1E007B8CDD /* CloseSelected.png */; };
-		18B41E931802FC1E007B8CDD /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B41E851802FC1E007B8CDD /* HelloWorld.png */; };
 		18B41E941802FC1E007B8CDD /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B41E871802FC1E007B8CDD /* CloseNormal.png */; };
 		18B41E951802FC1E007B8CDD /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B41E881802FC1E007B8CDD /* CloseSelected.png */; };
 		18B41E961802FC1E007B8CDD /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B41E891802FC1E007B8CDD /* HelloWorld.png */; };
@@ -273,6 +267,9 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		5701A6C518331AA900174A6D /* btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5701A6C418331AA900174A6D /* btn.png */; };
+		5701A6C718331BAF00174A6D /* btn_dn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5701A6C618331BAF00174A6D /* btn_dn.png */; };
+		5701A6C91833238E00174A6D /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 5701A6C81833238E00174A6D /* check.png */; };
 		57A6289B182C8FBA00E8BCAE /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 57A6289A182C8FBA00E8BCAE /* logo.png */; };
 		BF1373EF128A898400D9F789 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF492D4B1289302400A09262 /* OpenGLES.framework */; };
 		BF1373F0128A899500D9F789 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF492C21128924A800A09262 /* libxml2.dylib */; };
@@ -783,12 +780,6 @@
 		189B0C1F1816A21F003CDFEE /* SceneNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SceneNode.cpp; sourceTree = "<group>"; };
 		189B0C201816A21F003CDFEE /* SceneNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneNode.h; sourceTree = "<group>"; };
 		18B41E7D1802FC1E007B8CDD /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marker Felt.ttf"; sourceTree = "<group>"; };
-		18B41E7F1802FC1E007B8CDD /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
-		18B41E801802FC1E007B8CDD /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
-		18B41E811802FC1E007B8CDD /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
-		18B41E831802FC1E007B8CDD /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
-		18B41E841802FC1E007B8CDD /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
-		18B41E851802FC1E007B8CDD /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		18B41E871802FC1E007B8CDD /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		18B41E881802FC1E007B8CDD /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
 		18B41E891802FC1E007B8CDD /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
@@ -803,6 +794,9 @@
 		1D6058910D05DD3D006BFB54 /* HelloCpp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloCpp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5701A6C418331AA900174A6D /* btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn.png; sourceTree = "<group>"; };
+		5701A6C618331BAF00174A6D /* btn_dn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_dn.png; sourceTree = "<group>"; };
+		5701A6C81833238E00174A6D /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		57A6289A182C8FBA00E8BCAE /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		781C33B11547F06B00633F88 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		781C33B31547F06B00633F88 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -1865,9 +1859,12 @@
 				57A6289A182C8FBA00E8BCAE /* logo.png */,
 				18B41E991802FEAA007B8CDD /* Default@2x.png */,
 				189B0C0A18169DFE003CDFEE /* button_dn.png */,
+				5701A6C81833238E00174A6D /* check.png */,
 				185255B4182F7ACA00EA202A /* fish.png */,
 				18384C5D1825017A00E6199A /* sliderProgress.png */,
 				18384C5E1825017A00E6199A /* sliderThumb.png */,
+				5701A6C618331BAF00174A6D /* btn_dn.png */,
+				5701A6C418331AA900174A6D /* btn.png */,
 				18384C5F1825017A00E6199A /* sliderTrack.png */,
 				189B0C0B18169DFE003CDFEE /* button.png */,
 				18B41E9A1802FEAA007B8CDD /* Icon-57.png */,
@@ -1875,8 +1872,6 @@
 				18B41E9C1802FEAA007B8CDD /* Icon-114.png */,
 				18B41E9D1802FEAA007B8CDD /* Icon-144.png */,
 				18B41E7C1802FC1E007B8CDD /* fonts */,
-				18B41E7E1802FC1E007B8CDD /* ipad */,
-				18B41E821802FC1E007B8CDD /* ipadhd */,
 				18B41E861802FC1E007B8CDD /* iphone */,
 			);
 			name = Resources;
@@ -1889,26 +1884,6 @@
 				18B41E7D1802FC1E007B8CDD /* Marker Felt.ttf */,
 			);
 			path = fonts;
-			sourceTree = "<group>";
-		};
-		18B41E7E1802FC1E007B8CDD /* ipad */ = {
-			isa = PBXGroup;
-			children = (
-				18B41E7F1802FC1E007B8CDD /* CloseNormal.png */,
-				18B41E801802FC1E007B8CDD /* CloseSelected.png */,
-				18B41E811802FC1E007B8CDD /* HelloWorld.png */,
-			);
-			path = ipad;
-			sourceTree = "<group>";
-		};
-		18B41E821802FC1E007B8CDD /* ipadhd */ = {
-			isa = PBXGroup;
-			children = (
-				18B41E831802FC1E007B8CDD /* CloseNormal.png */,
-				18B41E841802FC1E007B8CDD /* CloseSelected.png */,
-				18B41E851802FC1E007B8CDD /* HelloWorld.png */,
-			);
-			path = ipadhd;
 			sourceTree = "<group>";
 		};
 		18B41E861802FC1E007B8CDD /* iphone */ = {
@@ -2048,6 +2023,7 @@
 			files = (
 				1839B25B18029A9C005EA308 /* CMakeLists.txt in Resources */,
 				18384C611825017A00E6199A /* sliderThumb.png in Resources */,
+				5701A6C91833238E00174A6D /* check.png in Resources */,
 				1839B38618029AB8005EA308 /* Android.mk in Resources */,
 				1839B38D18029AB9005EA308 /* websockets.dll in Resources */,
 				185255B5182F7ACA00EA202A /* fish.png in Resources */,
@@ -2057,14 +2033,9 @@
 				1839B54718029AC8005EA308 /* json_valueiterator.inl in Resources */,
 				1839B54918029AC8005EA308 /* sconscript in Resources */,
 				18B41E8D1802FC1E007B8CDD /* Marker Felt.ttf in Resources */,
-				18B41E8E1802FC1E007B8CDD /* CloseNormal.png in Resources */,
-				18B41E8F1802FC1E007B8CDD /* CloseSelected.png in Resources */,
-				18B41E901802FC1E007B8CDD /* HelloWorld.png in Resources */,
-				18B41E911802FC1E007B8CDD /* CloseNormal.png in Resources */,
-				18B41E921802FC1E007B8CDD /* CloseSelected.png in Resources */,
 				57A6289B182C8FBA00E8BCAE /* logo.png in Resources */,
-				18B41E931802FC1E007B8CDD /* HelloWorld.png in Resources */,
 				18B41E941802FC1E007B8CDD /* CloseNormal.png in Resources */,
+				5701A6C718331BAF00174A6D /* btn_dn.png in Resources */,
 				18B41E951802FC1E007B8CDD /* CloseSelected.png in Resources */,
 				18B41E961802FC1E007B8CDD /* HelloWorld.png in Resources */,
 				18B41E9E1802FEAA007B8CDD /* Default-568h@2x.png in Resources */,
@@ -2076,6 +2047,7 @@
 				18B41EA31802FEAA007B8CDD /* Icon-114.png in Resources */,
 				18B41EA41802FEAA007B8CDD /* Icon-144.png in Resources */,
 				189B0C1118169DFE003CDFEE /* button_dn.png in Resources */,
+				5701A6C518331AA900174A6D /* btn.png in Resources */,
 				189B0C1218169DFE003CDFEE /* button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

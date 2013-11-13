@@ -27,6 +27,16 @@ public:
 	virtual void ccTouchesMoved(cocos2d::CCSet* touches , cocos2d::CCEvent* event);
 	virtual void ccTouchesEnded(cocos2d::CCSet* touches , cocos2d::CCEvent* event);
 public:
+    HelloWorld(){
+        m_controlButton=NULL;
+        m_pSliderCtl=NULL;
+        m_pSliderCtl2=NULL;
+        pMenu0=NULL;
+        pMenuItem0=NULL;
+        pMenuItem1=NULL;
+        checkPic=NULL;
+    }
+public:
     cocos2d::extension::CCControlButton* m_controlButton;
     void resetSliders(CCObject *senderz, cocos2d::extension::CCControlEvent controlEvent);
 public:
@@ -38,6 +48,14 @@ public:
 	CCControlSlider* m_pSliderCtl2;
     void sliderAction2(CCObject* sender, CCControlEvent controlEvent);
     float m_initialValue2;
+public:
+    //menu0
+    CCMenu* pMenu0;
+    CCMenuItemImage *pMenuItem0;
+    CCMenuItemImage *pMenuItem1;
+    void menu0Callback(CCObject* pSender);
+    void menu1Callback(CCObject* pSender);
+    CCSprite*checkPic;
 public:
     vector<SceneNode*> pSceneNodeList;
     CCSprite* backGroundSprite;

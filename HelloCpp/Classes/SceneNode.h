@@ -42,7 +42,7 @@ public:
         velocity=CCPoint(0,0);
         accel=CCPoint(0,0);
         randomNumber=rand();
-        isDisapear=false;
+        isDisapear=true;
         
     }
     void setVelocity(const CCPoint&v){
@@ -83,6 +83,10 @@ private:
     float time;//time eclipsed since the particle start to move
     bool isDisapear;//whether the particle is disapeared
 };
+
+#define SHAPETYPE_CIRCLE 0
+#define SHAPETYPE_HEART 1
+
 class SceneNode : public CCSprite{//here SceneNode is a CCSprite
 public:
 	SceneNode() {
@@ -91,7 +95,8 @@ public:
         time=0;
         particleScale0=4.5;
         showThis=true;
-        isAllParticleDisapear=false;
+        isAllParticleDisapear=true;
+        shapeType=SHAPETYPE_CIRCLE;
         
     }
 	virtual ~SceneNode(){};
@@ -108,6 +113,10 @@ public:
     float getd_new()const {return d_new;}
     float getParticleScale0()const {return particleScale0;}
     void setParticleScale0(float value){particleScale0=value;}
+    void setShapeType(int _shapeType){shapeType=_shapeType;}
+    int getShapeType()const {return shapeType;}
+    
+    float calculateR(const CCPoint&dir,float R_content);
 private:
 	
 	CGLProgramWithMyUnifos program;//crrently unused
@@ -119,5 +128,6 @@ private:
     float particleScale0;//particle initial scale. we may want to make particles looks a litter bigger at the starting.
     bool showThis;//whether need to show *this. when shattering, *this should be hide
     bool isAllParticleDisapear;//whether all particles are disapeared
+    int shapeType;
 };
 #endif

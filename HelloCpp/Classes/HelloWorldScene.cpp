@@ -32,7 +32,7 @@ bool HelloWorld::init()
     
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
- /*   /////////////////////////////
+    /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
     //    you may modify it.
 
@@ -50,7 +50,7 @@ bool HelloWorld::init()
     CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
     pMenu->setPosition(CCPointZero);
     this->addChild(pMenu, 1);
-*/
+
     /////////////////////////////
     // 3. add your codes below...
     //enable touch
@@ -127,7 +127,37 @@ bool HelloWorld::init()
         m_controlButton=controlButton;
     }
 
-  
+    //----menu0
+    {
+        CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
+        
+        CCLabelTTF* pLabel0 = CCLabelTTF::create("circle", "Arial", 30);
+        CCLabelTTF* pLabel1 = CCLabelTTF::create("heart", "Arial", 30);
+        
+        pMenuItem0 = CCMenuItemImage::create("btn.png","btn_dn.png",this,menu_selector(HelloWorld::menu0Callback));
+        pMenuItem0->setPosition(CCPointZero);
+        pMenuItem0->addChild(pLabel0,10);
+        pLabel0->setPosition(ccp(pMenuItem0->getContentSize().width/2,pMenuItem0->getContentSize().height/2));
+        
+        pMenuItem1 = CCMenuItemImage::create("btn.png","btn_dn.png",this,menu_selector(HelloWorld::menu1Callback));
+        pMenuItem1->setPosition(pMenuItem0->getPosition()-ccp(0,pMenuItem0->getContentSize().height));
+        pMenuItem1->addChild(pLabel1,10);
+        pLabel1->setPosition(ccp(pMenuItem1->getContentSize().width/2,pMenuItem1->getContentSize().height/2));
+        
+        pMenu0 = CCMenu::create(pMenuItem0, pMenuItem1,NULL);
+        pMenu0->setPosition(ccp(screenSize.width*(3.0/4), screenSize.height*(3.0/4)));
+        this->addChild(pMenu0, 1);
+        
+        checkPic = CCSprite::create();
+        checkPic->initWithFile("check.png");
+        checkPic->setPosition(ccp(pMenuItem0->getContentSize().width+checkPic->getContentSize().width/2,pMenuItem0->getContentSize().height/2));
+        pMenuItem0->addChild(checkPic);
+        CCLOG("checkPic retainCount:%i",checkPic->retainCount());
+        
+
+        
+    }
+    
     
     // author info
     {
@@ -160,6 +190,26 @@ bool HelloWorld::init()
     this->addChild(pSprite, 0);
     */
     return true;
+}
+
+void HelloWorld::menu0Callback(CCObject* pSender){
+    checkPic->retain();
+    checkPic->removeFromParentAndCleanup(false);
+    pMenuItem0->addChild(checkPic);
+    checkPic->release();
+    checkPic->setPosition(ccp(pMenuItem0->getContentSize().width+checkPic->getContentSize().width/2,pMenuItem0->getContentSize().height/2));
+    this->pSceneNodeList[0]->setShapeType(0);
+
+}
+
+void HelloWorld::menu1Callback(CCObject* pSender){
+    checkPic->retain();
+    checkPic->removeFromParentAndCleanup(false);
+    pMenuItem1->addChild(checkPic);
+    checkPic->release();
+    checkPic->setPosition(ccp(pMenuItem1->getContentSize().width+checkPic->getContentSize().width/2,pMenuItem1->getContentSize().height/2));
+    this->pSceneNodeList[0]->setShapeType(1);
+    
 }
 
 void HelloWorld::sliderAction(CCObject* sender, CCControlEvent controlEvent)
@@ -259,8 +309,12 @@ void HelloWorld::ccTouchesBegan(CCSet* touches, CCEvent* event)
         CCPoint loc_GLSpace = CCDirector::sharedDirector()->convertToGL(loc_winSpace);
         //CCLOG("loc_GLSpace:%f,%f",loc_GLSpace.x,loc_GLSpace.y);
        
-        pSceneNodeList[0]->resetShatter();//d_new may be changed, so we need to reset shatter to update particle size.
-        pSceneNodeList[0]->startShatter();
+        if (pSceneNodeList[0]->getIsAllParticleDisapear()) {
+            pSceneNodeList[0]->resetShatter();//d_new may be changed, so we need to reset shatter to update particle size.
+            pSceneNodeList[0]->startShatter();
+        }
+        
+       
         
     }
 }
